@@ -6,6 +6,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.adhikari.rupak.jimtrace.R;
+import com.adhikari.rupak.jimtrace.ui.add_record.AddRecord;
+import com.adhikari.rupak.jimtrace.ui.addexercise.AddExcersise;
 import com.adhikari.rupak.jimtrace.ui.base.BaseActivity;
 import com.adhikari.rupak.jimtrace.ui.main_exercise_view.MainActivity;
 
@@ -39,10 +41,10 @@ public class ChooseActivity extends BaseActivity implements ChooseMvpView {
                 i = new Intent(this, MainActivity.class);
                 break;
             case R.id.viewexe:
-                //i = new Intent(this,)
+                i = new Intent(this, AddExcersise.class);
                 break;
             case R.id.add:
-                //
+                i = new Intent(this, AddRecord.class);
                 break;
 
         }

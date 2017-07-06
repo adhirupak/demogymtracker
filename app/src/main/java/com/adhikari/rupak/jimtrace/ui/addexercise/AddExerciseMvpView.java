@@ -7,4 +7,5 @@ import com.adhikari.rupak.jimtrace.ui.base.MvpView;
  */
 
 public interface AddExerciseMvpView extends MvpView {
+    void resetList();
 }

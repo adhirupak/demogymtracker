@@ -1,19 +1,24 @@
 package com.adhikari.rupak.jimtrace.models;
 
-import java.util.List;
+import io.realm.RealmList;
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
 /**
  * Created by AM Nepal on 7/5/2017.
  */
 
-public class Record {
+public class Record  extends RealmObject{
+    @PrimaryKey
     private String date;
-    private String day;
-    private List<Exercise> exercises;
 
-    public Record(String date, String day, List<Exercise> exercises) {
+    private RealmList<Exercise> exercises;
+
+    public Record() {
+    }
+
+    public Record(String date, RealmList<Exercise> exercises) {
         this.date = date;
-        this.day = day;
         this.exercises = exercises;
     }
 
@@ -25,19 +30,13 @@ public class Record {
         this.date = date;
     }
 
-    public String getDay() {
-        return day;
-    }
 
-    public void setDay(String day) {
-        this.day = day;
-    }
 
-    public List<Exercise> getExercises() {
+    public RealmList<Exercise> getExercises() {
         return exercises;
     }
 
-    public void setExercises(List<Exercise> exercises) {
+    public void setExercises(RealmList<Exercise> exercises) {
         this.exercises = exercises;
     }
 }

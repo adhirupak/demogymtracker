@@ -11,6 +11,9 @@ public class Exercise extends RealmObject {
     private String steps;
     private String weight;
 
+    public Exercise() {
+    }
+
     public Exercise(String name, String steps, String weight) {
         this.name = name;
         this.steps = steps;

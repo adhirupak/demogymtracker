@@ -22,6 +22,9 @@ public class MainRecordAdapter extends RecyclerView.Adapter {
     private Context mContext;
     private List<Record> records;
 
+    public MainRecordAdapter() {
+    }
+
     public MainRecordAdapter(Context mContext, List<Record> records) {
         this.mContext = mContext;
         this.records = records;

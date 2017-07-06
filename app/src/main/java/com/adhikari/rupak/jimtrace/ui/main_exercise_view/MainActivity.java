@@ -8,11 +8,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.adhikari.rupak.jimtrace.R;
-import com.adhikari.rupak.jimtrace.models.Exercise;
 import com.adhikari.rupak.jimtrace.models.Record;
 import com.adhikari.rupak.jimtrace.ui.base.BaseActivity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -28,7 +26,6 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     @BindView(R.id.recordlist)
     RecyclerView mainRecycleview;
 
-    private List<Record> records = new ArrayList<>();
     private MainRecordAdapter adapter;
 
     @Override
@@ -37,26 +34,28 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         getActivityComponent().inject(this);
         mPresenter.attachView(this);
         ButterKnife.bind(this);
-        setUpData();
+        mPresenter.loadDataFromRealm();
 
 
     }
 
-    private void setUpData() {
-        Exercise ex = new Exercise("Chest","4 Stage","20");
-        List<Exercise> exer = new ArrayList<>();
-        for(int i =0;i<9;i++){
-            exer.add(ex);
-        }
-
-        for(int i = 0;i<exer.size();i++){
-            Record r = new Record("july5","friday",exer);
-
-            records.add(r);
-        }
+    private void setUpData(List<Record> records) {
+//        Exercise ex = new Exercise("Chest","4 Stage","20");
+//        List<Exercise> exer = new ArrayList<>();
+//        for(int i =0;i<9;i++){
+//            exer.add(ex);
+//        }
+//
+//        for(int i = 0;i<exer.size();i++){
+//            Record r = new Record("july5","friday",exer);
+//
+//            records.add(r);
+//        }
 
         adapter = new MainRecordAdapter(this,records);
         mainRecycleview.setLayoutManager(new LinearLayoutManager(MainActivity.this));
@@ -84,5 +83,15 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
+    @Override
+    public void onDataloaded(List<Record> records) {
+        setUpData(records);
     }
 }

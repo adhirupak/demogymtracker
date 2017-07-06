@@ -25,6 +25,14 @@
         <activity
             android:name=".ui.addexercise.AddExcersise"
             android:label="@string/title_activity_add_excersise"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.add_record.AddRecord"
+            android:label="@string/title_activity_add_record"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.save_record.SaveRecord"
+            android:label="@string/title_activity_save_record"
             android:theme="@style/AppTheme"></activity>
     </application>
 

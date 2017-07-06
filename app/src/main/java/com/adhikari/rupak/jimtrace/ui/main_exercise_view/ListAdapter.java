@@ -21,7 +21,10 @@ public class ListAdapter extends BaseAdapter {
     private List<Exercise> exercises;
     private Context mContext;
 
-    public ListAdapter(Context c,List<Exercise> exercises) {
+    public ListAdapter() {
+    }
+
+    public ListAdapter(Context c, List<Exercise> exercises) {
         this.exercises = exercises;
         this.mContext = c;
     }
